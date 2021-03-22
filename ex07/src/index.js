@@ -18,10 +18,22 @@ var collection = {
   },
 };
 var oldCollection = JSON.parse(JSON.stringify(collection));
-
 function updateRecords(object, id, prop, value) {
-    const defi = object[id][prop].push(value);
-    return defi;
+  if (prop === "tracks" && value !== "") {
+    if (object[id].hasOwnProperty(prop)) {
+      object[id][prop].push(value);
+    } else {
+      object[id][prop] = [];
+      object[id][prop].push(value);
+    }
+  } else {
+    if (value === "") {
+      delete object[id][prop];
+    } else {
+      object[id][prop] = value;
+    }
+  }
+  return object;
 }
 console.log(updateRecords(collection, 5439, "artist", "ABBA"));
 module.exports = updateRecords;

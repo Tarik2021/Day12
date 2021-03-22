@@ -16,5 +16,5 @@ function sumFibonacci(num) {
   }
   return sumOdd + 1;
 }
-console.log(sumFibonacci(2));
+console.log(sumFibonacci(20));
 module.exports = sumFibonacci;

@@ -25,10 +25,16 @@ var contacts = [
   },
 ];
 function lookUpProfile(name, prop) {
-  if (name === contacts.firstName && prop === contacts.likes) {
-    const value = contacts[prop];
-  return value;
-  }
+	for (var i = 0; i < contacts.length; i++) {
+		if (contacts[i].hasOwnProperty(prop)) {
+			if (contacts[i].firstName === name) {
+				return contacts[i][prop];
+			}
+		} else {
+			return "No such property";
+		}
+	}
+	return "No such contact";
 }
 console.log(lookUpProfile("John", "likes"));
 // treba vratit c c c
